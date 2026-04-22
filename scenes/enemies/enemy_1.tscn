@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cemohmi6tbvp4"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_1.gd" id="1_mlfm0"]
+[ext_resource type="Texture2D" uid="uid://bog06a5ttq5j0" path="res://assets/art/enemies/Enemy.jpeg" id="2_483ua"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5v3ec"]
+radius = 16.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pguck"]
+radius = 89.52
+height = 179.04
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8fqj8"]
+radius = 20.0
+height = 40.0
+
+[node name="Enemy1" type="CharacterBody2D" groups=["enemy"]]
+position = Vector2(188, 0)
+script = ExtResource("1_mlfm0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_483ua")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5v3ec")
+one_way_collision_margin = 0.0
+debug_color = Color(0, 0.61035, 0.635927, 0.42)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_mask = 32
+
+[node name="DetectCollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CapsuleShape2D_pguck")
+debug_color = Color(0.991572, 0, 0.26379, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="HurtBoxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape2D_8fqj8")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

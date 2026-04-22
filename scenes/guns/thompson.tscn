@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://di1ij3xcdcq4o"]
+
+[ext_resource type="Script" path="res://scripts/guns/thompson.gd" id="1_35kk6"]
+[ext_resource type="Texture2D" uid="uid://cgcmemcouvitc" path="res://assets/art/guns/thompson.png" id="1_rkjsm"]
+
+[node name="Thompson" type="Node2D"]
+script = ExtResource("1_35kk6")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(28, -1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 2)
+texture = ExtResource("1_rkjsm")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpfyks1aut7cu"]
+
+[ext_resource type="Script" path="res://scripts/ui/totem.gd" id="1_47a6w"]
+[ext_resource type="Texture2D" uid="uid://c0jb2e818em30" path="res://assets/art/char/Player.jpeg" id="1_c2bs7"]
+[ext_resource type="PackedScene" uid="uid://bvh7yrf5jnb8s" path="res://scenes/ui/interactable.tscn" id="2_1fxjt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6pt3a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ann1"]
+radius = 58.0
+
+[node name="Totem" type="StaticBody2D"]
+script = ExtResource("1_47a6w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6pt3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c2bs7")
+
+[node name="Interactable" parent="." instance=ExtResource("2_1fxjt")]
+collision_layer = 2
+interact_name = "Use Totem"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("CircleShape2D_5ann1")
