@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://75k4hphkrib2"]
+[gd_scene format=3 uid="uid://75k4hphkrib2"]
 
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_hqdyo"]
+[ext_resource type="Script" uid="uid://txjrenrw31td" path="res://scripts/player/player.gd" id="1_hqdyo"]
 [ext_resource type="Shader" uid="uid://depuxmlhf61sr" path="res://tres/player_hit_flash.tres" id="2_1datm"]
 [ext_resource type="Texture2D" uid="uid://blc5dbp6vwle8" path="res://assets/art/char/char_movements.png" id="3_hsun1"]
 [ext_resource type="PackedScene" uid="uid://di1ij3xcdcq4o" path="res://scenes/guns/thompson.tscn" id="4_kod2y"]
@@ -180,55 +180,53 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jbbow"]
 _data = {
-"RESET": SubResource("Animation_b5y58"),
-"back_idle": SubResource("Animation_dod7a"),
-"back_side_idle": SubResource("Animation_qocus"),
-"back_side_walk": SubResource("Animation_i80ix"),
-"back_walk": SubResource("Animation_f4n71"),
-"front_idle": SubResource("Animation_hkobt"),
-"front_walk": SubResource("Animation_74ygl"),
-"hit_flash": SubResource("Animation_y21wa"),
-"side_idle": SubResource("Animation_dxcu3"),
-"side_walk": SubResource("Animation_vr4dq")
+&"RESET": SubResource("Animation_b5y58"),
+&"back_idle": SubResource("Animation_dod7a"),
+&"back_side_idle": SubResource("Animation_qocus"),
+&"back_side_walk": SubResource("Animation_i80ix"),
+&"back_walk": SubResource("Animation_f4n71"),
+&"front_idle": SubResource("Animation_hkobt"),
+&"front_walk": SubResource("Animation_74ygl"),
+&"hit_flash": SubResource("Animation_y21wa"),
+&"side_idle": SubResource("Animation_dxcu3"),
+&"side_walk": SubResource("Animation_vr4dq")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=2100178943 groups=["player"]]
 collision_layer = 32
 platform_floor_layers = 4294967041
 platform_wall_layers = 1
 script = ExtResource("1_hqdyo")
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="." unique_id=1238279912]
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
-[node name="CollisionShape" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1790501074]
 shape = SubResource("CapsuleShape2D_s0oa8")
 one_way_collision_margin = 0.0
 debug_color = Color(0, 0.632205, 0.454014, 0.42)
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=277859261]
 collision_layer = 32
 
-[node name="HurtBoxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="HurtBoxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=331874196]
 shape = SubResource("CapsuleShape2D_ydfxv")
 debug_color = Color(0.991572, 0, 0.26379, 0.42)
 
-[node name="Body" type="Sprite2D" parent="."]
+[node name="Body" type="Sprite2D" parent="." unique_id=1209698030]
 material = SubResource("ShaderMaterial_sa18t")
 texture = ExtResource("3_hsun1")
 hframes = 6
 vframes = 8
 frame = 18
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_jbbow")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1176284456]
+libraries/ = SubResource("AnimationLibrary_jbbow")
 
-[node name="Thompson" parent="." instance=ExtResource("4_kod2y")]
+[node name="Thompson" parent="." unique_id=1451823566 instance=ExtResource("4_kod2y")]
 position = Vector2(5, 3)
 
-[node name="InteractingComponent" parent="." instance=ExtResource("5_j8gpv")]
+[node name="InteractingComponent" parent="." unique_id=1682753493 instance=ExtResource("5_j8gpv")]
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

@@ -1,9 +1,9 @@
 extends gun_base
 
-@export var custom_fire_rate = 0.15
+@export var custom_fire_rate = 0.3
 @export var custom_bullet_speed = 1000
 @export var custom_damage = 1
-@export var custom_spread = 5
+@export var custom_spread = 2
 
 var custom_bullet_scene = preload("res://scenes/projectiles/thompson_bullet.tscn")
 

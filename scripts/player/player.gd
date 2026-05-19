@@ -23,50 +23,24 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func update_animation(direction_to_mouse: Vector2, is_moving: bool) -> void:
+	var anim = ""
+	var moving_suffix = "_walk" if is_moving else "_idle"
 	if abs(direction_to_mouse.x) > 0.5 and direction_to_mouse.y < -0.5:
-		if direction_to_mouse.x > 0:
-			if is_moving:
-				player_sprite.flip_h = false
-				$AnimationPlayer.play("back_side_walk")
-			else:
-				player_sprite.flip_h = false
-				$AnimationPlayer.play("back_side_idle")
-		else:
-			if is_moving:
-				player_sprite.flip_h = true
-				$AnimationPlayer.play("back_side_walk")
-			else:
-				player_sprite.flip_h = true
-				$AnimationPlayer.play("back_side_idle")
-	else:
-		if abs(direction_to_mouse.x) > abs(direction_to_mouse.y):
-			if direction_to_mouse.x > 0:
-				if is_moving:
-					player_sprite.flip_h = false
-					$AnimationPlayer.play("side_walk")
-				else:
-					player_sprite.flip_h = false
-					$AnimationPlayer.play("side_idle")
-			else:
-				if is_moving:
-					player_sprite.flip_h = true
-					$AnimationPlayer.play("side_walk")
-				else:
-					player_sprite.flip_h = true
-					$AnimationPlayer.play("side_idle")
-		else:
-			if direction_to_mouse.y > 0:
-				if is_moving:
-					$AnimationPlayer.play("front_walk")
-				else:
-					$AnimationPlayer.play("front_idle")
-			else:
-				if is_moving:
-					$AnimationPlayer.play("back_walk")
-				else:
-					$AnimationPlayer.play("back_idle")
+		anim = "back_side"
+		player_sprite.flip_h = direction_to_mouse.x < 0
 
-			
+	elif abs(direction_to_mouse.x) > abs(direction_to_mouse.y):
+		anim = "side"
+		player_sprite.flip_h = direction_to_mouse.x < 0
+
+	else:
+		anim = "front" if direction_to_mouse.y > 0 else "back"
+
+	var final_anim = anim + moving_suffix
+
+	if $AnimationPlayer.current_animation != final_anim:
+		$AnimationPlayer.play(final_anim)
+
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy") and not invulnerable:
 		invulnerable = true
