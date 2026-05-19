@@ -21,18 +21,19 @@ func _physics_process(delta: float) -> void:
 
 	look_at(mouse_pos)
 
-	var angle = wrapf(rotation_degrees, 0.0, 360.0)
+	var angle = rad_to_deg(direction.angle())
 
 	# Anti flicker
 	if facing_left:
-		if angle < 125.0 or angle > 325.0:
+		if angle < 80 and angle > -80:
 			facing_left = false
 	else:
-		if angle > 145.0 and angle < 305.0:
+		if angle > 100 or angle < -100:
 			facing_left = true
-
-	scale.y = -1 if facing_left else 1
+			
+	$Sprite2D.flip_v = facing_left	
 	position.x = -6 if facing_left else 6
+	muzzle.position.y = 6 if facing_left else 0
 
 	last_time_shot += delta
 
