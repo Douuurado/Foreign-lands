@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://mqj21swogplv"]
+[gd_scene format=3 uid="uid://mqj21swogplv"]
 
-[ext_resource type="PackedScene" uid="uid://dlb8uug2x0unw" path="res://scenes/ui/health_bar.tscn" id="1_i2wyg"]
+[ext_resource type="PackedScene" uid="uid://dlb8uug2x0unw" path="res://UI/hud/health_bar/health_bar.tscn" id="1_i2wyg"]
 [ext_resource type="Texture2D" uid="uid://be00ue5svuk5v" path="res://assets/art/ui/Heart.png" id="2_csfbi"]
 [ext_resource type="Texture2D" uid="uid://buhf82xfhqbqx" path="res://assets/art/ui/Heart0.png" id="3_i2jmt"]
 [ext_resource type="Texture2D" uid="uid://dku7mbjkpccw" path="res://assets/art/tiles/grass_sheet.png" id="4_c21hc"]

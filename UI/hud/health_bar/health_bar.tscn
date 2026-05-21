@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dlb8uug2x0unw"]
+
+[ext_resource type="Script" uid="uid://33pkb8t8j3bu" path="res://UI/hud/health_bar/health_bar.gd" id="1_wnxxd"]
+[ext_resource type="Texture2D" uid="uid://be00ue5svuk5v" path="res://assets/art/ui/Heart.png" id="2_h4ei8"]
+
+[node name="HealthBar" type="Node2D" unique_id=245538557]
+script = ExtResource("1_wnxxd")
+
+[node name="Heart1" type="Sprite2D" parent="." unique_id=887049094]
+position = Vector2(-11, -13)
+scale = Vector2(1.5, 1.5625)
+texture = ExtResource("2_h4ei8")
+centered = false
+
+[node name="Heart2" type="Sprite2D" parent="." unique_id=232366496]
+position = Vector2(16, -13)
+scale = Vector2(1.5, 1.5625)
+texture = ExtResource("2_h4ei8")
+centered = false
+
+[node name="Heart3" type="Sprite2D" parent="." unique_id=387450552]
+position = Vector2(43, -13)
+scale = Vector2(1.5, 1.5625)
+texture = ExtResource("2_h4ei8")
+centered = false

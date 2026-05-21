@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bpfyks1aut7cu"]
 
-[ext_resource type="Script" uid="uid://tm0nst85fukp" path="res://scripts/ui/totem.gd" id="1_47a6w"]
+[ext_resource type="Script" uid="uid://tm0nst85fukp" path="res://Systems/totem/totem.gd" id="1_47a6w"]
 [ext_resource type="Texture2D" uid="uid://c0jb2e818em30" path="res://assets/art/char/Player.jpeg" id="1_c2bs7"]
-[ext_resource type="PackedScene" uid="uid://bvh7yrf5jnb8s" path="res://scenes/ui/interactable.tscn" id="2_1fxjt"]
+[ext_resource type="PackedScene" uid="uid://bvh7yrf5jnb8s" path="res://Systems/interaction/interactable.tscn" id="2_1fxjt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pt3a"]
 radius = 16.0

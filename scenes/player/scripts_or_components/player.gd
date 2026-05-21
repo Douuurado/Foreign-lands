@@ -3,7 +3,6 @@ class_name player extends CharacterBody2D
 const SPEED = 300.0
 var invulnerable = false
 var invulnerability_time = 0.5
-
 @onready var player_sprite = get_node("Body")
 
 

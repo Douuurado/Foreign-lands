@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://75k4hphkrib2"]
 
-[ext_resource type="Script" uid="uid://txjrenrw31td" path="res://scripts/player/player.gd" id="1_hqdyo"]
-[ext_resource type="Shader" uid="uid://depuxmlhf61sr" path="res://tres/player_hit_flash.tres" id="2_1datm"]
+[ext_resource type="Script" uid="uid://txjrenrw31td" path="res://scenes/player/scripts_or_components/player.gd" id="1_hqdyo"]
+[ext_resource type="Shader" uid="uid://depuxmlhf61sr" path="res://scenes/player/player_hit_flash.tres" id="2_1datm"]
 [ext_resource type="Texture2D" uid="uid://blc5dbp6vwle8" path="res://assets/art/char/char_movements.png" id="3_hsun1"]
-[ext_resource type="PackedScene" uid="uid://di1ij3xcdcq4o" path="res://scenes/guns/thompson.tscn" id="4_kod2y"]
-[ext_resource type="PackedScene" uid="uid://c8jdd3hho5x1d" path="res://scenes/ui/interacting_component.tscn" id="5_j8gpv"]
+[ext_resource type="PackedScene" uid="uid://di1ij3xcdcq4o" path="res://scenes/guns/thompson/thompson.tscn" id="4_kod2y"]
+[ext_resource type="PackedScene" uid="uid://c8jdd3hho5x1d" path="res://Systems/interaction/interacting_component.tscn" id="5_j8gpv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s0oa8"]
 radius = 17.0

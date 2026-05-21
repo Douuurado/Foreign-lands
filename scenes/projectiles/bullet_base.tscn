@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cis46kn817qgc"]
 
-[ext_resource type="Script" uid="uid://brd35h1vjqh6l" path="res://scripts/projectiles/bullet_base.gd" id="1_ennmk"]
+[ext_resource type="Script" uid="uid://brd35h1vjqh6l" path="res://scenes/projectiles/bullet_base.gd" id="1_ennmk"]
 [ext_resource type="Texture2D" uid="uid://dyfb8yulvpl8g" path="res://assets/art/projectiles/bullet.png" id="2_viivg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tsv8p"]
