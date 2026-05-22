@@ -15,14 +15,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Foreign Lands"
-run/main_scene="res://scenes/screens/Main.tscn"
+run/main_scene="res://systems/core/main.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://scenes/screens/icon.svg"
 
 [autoload]
 
-HealthManager="*res://scripts/ui/health_manager.gd"
-EnemyHealthManager="*res://scripts/ui/enemy_health_manager.gd"
+HealthManager="*res://systems/health_manager/health_manager.gd"
+EnemyHealthManager="*res://scenes/enemies/enemy_demo/enemy_health_manager.gd"
 
 [display]
 

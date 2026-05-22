@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://75k4hphkrib2"]
 
-[ext_resource type="Script" uid="uid://txjrenrw31td" path="res://scripts/player/player.gd" id="1_hqdyo"]
-[ext_resource type="Shader" uid="uid://depuxmlhf61sr" path="res://tres/player_hit_flash.tres" id="2_1datm"]
-[ext_resource type="Texture2D" uid="uid://blc5dbp6vwle8" path="res://assets/art/char/char_movements.png" id="3_hsun1"]
-[ext_resource type="PackedScene" uid="uid://di1ij3xcdcq4o" path="res://scenes/guns/thompson.tscn" id="4_kod2y"]
-[ext_resource type="PackedScene" uid="uid://c8jdd3hho5x1d" path="res://scenes/ui/interacting_component.tscn" id="5_j8gpv"]
+[ext_resource type="Script" uid="uid://txjrenrw31td" path="res://scenes/player/player.gd" id="1_hqdyo"]
+[ext_resource type="Shader" uid="uid://depuxmlhf61sr" path="res://scenes/player/player_hit_flash.tres" id="2_p47bc"]
+[ext_resource type="Texture2D" uid="uid://blc5dbp6vwle8" path="res://assets/arts/player/player_movements.png" id="3_75vfm"]
+[ext_resource type="PackedScene" uid="uid://di1ij3xcdcq4o" path="res://scenes/guns/thompson/thompson.tscn" id="4_kod2y"]
+[ext_resource type="PackedScene" uid="uid://c8jdd3hho5x1d" path="res://systems/interactions/interactable_component.tscn" id="5_0owmy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s0oa8"]
 radius = 17.0
@@ -15,7 +15,7 @@ radius = 19.0
 height = 38.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sa18t"]
-shader = ExtResource("2_1datm")
+shader = ExtResource("2_p47bc")
 shader_parameter/enabled = false
 shader_parameter/hit_colour = Color(0.738886, 0, 0.051935, 1)
 
@@ -216,7 +216,7 @@ debug_color = Color(0.991572, 0, 0.26379, 0.42)
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1209698030]
 material = SubResource("ShaderMaterial_sa18t")
-texture = ExtResource("3_hsun1")
+texture = ExtResource("3_75vfm")
 hframes = 6
 vframes = 8
 frame = 18
@@ -227,6 +227,6 @@ libraries/ = SubResource("AnimationLibrary_jbbow")
 [node name="Thompson" parent="." unique_id=1451823566 instance=ExtResource("4_kod2y")]
 position = Vector2(5, 3)
 
-[node name="InteractingComponent" parent="." unique_id=1682753493 instance=ExtResource("5_j8gpv")]
+[node name="InteractingComponent" parent="." unique_id=1682753493 instance=ExtResource("5_0owmy")]
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

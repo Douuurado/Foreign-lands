@@ -1,1 +1,0 @@
-extends bullet_base
