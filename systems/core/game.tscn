@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bv7shmdcdham2"]
+
+[ext_resource type="Script" uid="uid://cajji5k5ydrgm" path="res://systems/core/game.gd" id="1_e0est"]
+[ext_resource type="PackedScene" uid="uid://cemohmi6tbvp4" path="res://scenes/enemies/enemy_demo/enemy_demo.tscn" id="2_a4aen"]
+[ext_resource type="PackedScene" uid="uid://75k4hphkrib2" path="res://scenes/player/player.tscn" id="3_voaa7"]
+[ext_resource type="PackedScene" uid="uid://mqj21swogplv" path="res://ui/game_screen/game_screen.tscn" id="4_s7ty0"]
+[ext_resource type="PackedScene" uid="uid://c48560254sqge" path="res://ui/pause_menu/pause_menu.tscn" id="5_s6s37"]
+[ext_resource type="PackedScene" uid="uid://bpfyks1aut7cu" path="res://systems/totem/totem.tscn" id="6_8qn0a"]
+
+[node name="Main" type="Node2D" unique_id=390945680]
+script = ExtResource("1_e0est")
+
+[node name="Enemy1" parent="." unique_id=1190441581 instance=ExtResource("2_a4aen")]
+position = Vector2(245, -263)
+
+[node name="Player" parent="." unique_id=139920146 instance=ExtResource("3_voaa7")]
+
+[node name="Enemy2" parent="." unique_id=20301533 instance=ExtResource("2_a4aen")]
+position = Vector2(-230, -257)
+
+[node name="HUD" parent="." unique_id=1312088494 instance=ExtResource("4_s7ty0")]
+
+[node name="PauseMenu" parent="." unique_id=1620780129 instance=ExtResource("5_s6s37")]
+visible = false
+
+[node name="Totem" parent="." unique_id=1243785729 instance=ExtResource("6_8qn0a")]
+position = Vector2(0, -104)
