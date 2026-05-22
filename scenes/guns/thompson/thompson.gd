@@ -1,4 +1,4 @@
-extends gun_base
+extends GunDemo
 
 @export var custom_fire_rate = 0.15
 @export var custom_bullet_speed = 1000

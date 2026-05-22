@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://di1ij3xcdcq4o"]
 
 [ext_resource type="Script" uid="uid://c7oovnrahfna4" path="res://scenes/guns/thompson/thompson.gd" id="1_35kk6"]
-[ext_resource type="Texture2D" uid="uid://cgcmemcouvitc" path="res://assets/art/guns/thompson.png" id="1_rkjsm"]
+[ext_resource type="Texture2D" uid="uid://cgcmemcouvitc" path="res://assets/arts/guns/thompson.png" id="1_rkjsm"]
 
 [node name="Thompson" type="Node2D" unique_id=1234401016]
 script = ExtResource("1_35kk6")
