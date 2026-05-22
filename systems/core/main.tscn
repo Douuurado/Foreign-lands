@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dt5vukam2avan"]
 
-[ext_resource type="Script" uid="uid://dpjnkd04jabig" path="res://ui/options_menu/controls.gd" id="1_elqb8"]
+[ext_resource type="Script" uid="uid://dpjnkd04jabig" path="res://ui/options_menu/controls.gd" id="1_msbe6"]
 
 [node name="Main" type="Control" unique_id=1986103966]
 layout_mode = 3
@@ -11,7 +11,7 @@ offset_right = -640.0
 offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_elqb8")
+script = ExtResource("1_msbe6")
 level_path = "res://systems/core/game.tscn"
 level_path1 = "res://ui/options_menu/options_menu.tscn"
 
