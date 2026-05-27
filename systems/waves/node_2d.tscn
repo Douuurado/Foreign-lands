@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://u1ajj7qs15qd"]
+
+[ext_resource type="Script" uid="uid://dhgxvddherbf3" path="res://systems/waves/node.gd" id="1_tg1li"]
+[ext_resource type="Script" uid="uid://4w5dq3gb3k3r" path="res://node_2d.gd" id="1_x5l3g"]
+[ext_resource type="PackedScene" uid="uid://cemohmi6tbvp4" path="res://scenes/enemies/enemy_demo/enemy_demo.tscn" id="3_nvui2"]
+
+[node name="Node2D" type="Node2D" unique_id=465028055]
+
+[node name="WavesManager" type="Node" parent="." unique_id=2068706183]
+script = ExtResource("1_tg1li")
+
+[node name="Spawner" type="Node2D" parent="." unique_id=590241368 groups=["player"]]
+script = ExtResource("1_x5l3g")
+enemy_scene = ExtResource("3_nvui2")

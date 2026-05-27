@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://mqj21swogplv" path="res://ui/game_screen/game_screen.tscn" id="4_s7ty0"]
 [ext_resource type="PackedScene" uid="uid://c48560254sqge" path="res://ui/pause_menu/pause_menu.tscn" id="5_s6s37"]
 [ext_resource type="PackedScene" uid="uid://bpfyks1aut7cu" path="res://systems/totem/totem.tscn" id="6_8qn0a"]
+[ext_resource type="PackedScene" uid="uid://u1ajj7qs15qd" path="res://systems/waves/node_2d.tscn" id="7_65igt"]
 
 [node name="Main" type="Node2D" unique_id=390945680]
 script = ExtResource("1_e0est")
@@ -25,3 +26,5 @@ visible = false
 
 [node name="Totem" parent="." unique_id=1243785729 instance=ExtResource("6_8qn0a")]
 position = Vector2(0, -104)
+
+[node name="Waves" parent="." unique_id=465028055 groups=["player"] instance=ExtResource("7_65igt")]
