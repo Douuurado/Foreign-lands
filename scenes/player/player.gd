@@ -7,11 +7,31 @@ var invulnerable = false
 ## Tempo de duração (em segundos) do estado de invulnerabilidade após ser atingido.
 var invulnerability_time = 0.5
 
+## Velocidade máxima base do dash
+const DASH_SPEED = 800.0 
+## Duração de tempo do dash (0.1 da velocidade = 80 pixels)
+const DASH_DURATION = 0.1
+## Duração de tempo até poder usar outro dash
+const DASH_COOLDOWN = 0.5
+
+## Controla a movimentação do dash
+var is_dashing = false
+## Controla se o dash pode ocorrer de novo ou não
+var can_dash = true
+##  Inicializa a direção do dash no vetor (0,0)
+var dash_direction = Vector2.ZERO
+
 ## Referência ao nó de sprite que renderiza o corpo do personagem.
 @onready var player_sprite = get_node("Body")
 
 ## Inicializa e atualiza movimentação e posição do mouse e sprite a cada frame de física.
 func _physics_process(_delta: float) -> void:
+	# Realiza a movimentação do dash quando ativado
+	if is_dashing:
+		velocity = dash_direction * DASH_SPEED
+		move_and_slide()
+		return
+	
 	# Captura os inputs do teclado ou controle (A, D, W, S / Setas)
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
@@ -30,6 +50,12 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+		
+	if Input.is_action_just_pressed("ui_accept") and can_dash:
+		if direction != Vector2.ZERO:
+			start_dash(direction)
+		else:
+			start_dash(Vector2.RIGHT)
 	
 	# Atualiza os sprites e direções da animação com base na posição do mouse e movimento
 	update_animation(direction_to_mouse, velocity.length() > 1.0)
@@ -75,3 +101,27 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		# Aguarda o fim do tempo de invulnerabilidade
 		await get_tree().create_timer(invulnerability_time).timeout
 		invulnerable = false
+		
+## Configura o estado do dash (liga ou desliga o dash)
+func start_dash(direction: Vector2) -> void:
+	# Liga as variáveis do estado do dash
+	can_dash = false
+	is_dashing = true
+	
+	# Normaliza a direção para torná-la tamanho 1 (evita diagonais crescerem rápido)
+	dash_direction = direction.normalized()
+	
+	# Torna o jogador invunerável durante o dash
+	invulnerable = true 
+	
+	# Duração de tempo que o dash se manterá ativo
+	await get_tree().create_timer(DASH_DURATION).timeout
+	
+	# Desliga as variáveis do estado do dash
+	is_dashing = false
+	invulnerable = false
+	
+	# Espera o cooldown
+	await get_tree().create_timer(DASH_COOLDOWN).timeout
+	
+	can_dash = true
