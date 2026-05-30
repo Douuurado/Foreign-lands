@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 ## Velocidade de deslocamento do inimigo durante a perseguição.
-@export var speed : int = 200
+@export var speed : int = 100
 ## Quantidade máxima de pontos de vida que o inimigo possui.
 @export var max_health : int = 3
 ## Quantidade de dano que este inimigo causa ao atingir o jogador.
