@@ -4,7 +4,7 @@ extends Node
 var current_health : int
 
 signal on_health_changed(new_health)
-signal died 
+signal died
 
 func _ready():	
 	current_health = max_health
@@ -30,3 +30,8 @@ func increase_health(health_amount : int):
 func die():
 	died.emit()
 	queue_free()
+	call_deferred("_go_to_death_screen")
+
+func _go_to_death_screen():
+	get_tree().change_scene_to_file("res://scenes/screens/TelaMorte.tscn")
+	

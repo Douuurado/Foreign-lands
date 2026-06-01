@@ -1,11 +1,13 @@
 class_name player extends CharacterBody2D
 
-const SPEED = 300.0
+@export var SPEED = 300.0
 var invulnerable = false
 var invulnerability_time = 0.5
 
 @onready var player_sprite = get_node("Body")
 
+
+	
 
 func _physics_process(_delta: float) -> void:
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -74,3 +76,4 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		HealthManager.decrease_health(body.damage_amount)
 		await get_tree().create_timer(invulnerability_time).timeout
 		invulnerable = false
+		

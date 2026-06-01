@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://mqj21swogplv"]
+[gd_scene format=3 uid="uid://mqj21swogplv"]
 
 [ext_resource type="PackedScene" uid="uid://dlb8uug2x0unw" path="res://scenes/ui/health_bar.tscn" id="1_i2wyg"]
 [ext_resource type="Texture2D" uid="uid://be00ue5svuk5v" path="res://assets/art/ui/Heart.png" id="2_csfbi"]
@@ -131,16 +131,16 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_4r43d")
 
-[node name="HUD" type="Node2D"]
+[node name="HUD" type="Node2D" unique_id=1582232515]
 rotation = 0.00301304
 
-[node name="GameScreen" type="CanvasLayer" parent="."]
+[node name="GameScreen" type="CanvasLayer" parent="." unique_id=1944018734]
 
-[node name="HealthBar" parent="GameScreen" instance=ExtResource("1_i2wyg")]
+[node name="HealthBar" parent="GameScreen" unique_id=1822998026 instance=ExtResource("1_i2wyg")]
 heart1 = ExtResource("2_csfbi")
 heart0 = ExtResource("3_i2jmt")
 
-[node name="WorldTileMap" type="TileMap" parent="."]
+[node name="WorldTileMap" type="TileMap" parent="." unique_id=531089617]
 tile_set = SubResource("TileSet_414gc")
 format = 2
 layer_0/name = "Layer 0"
