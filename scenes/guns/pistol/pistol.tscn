@@ -6,10 +6,12 @@
 [node name="Pistol" type="Node2D" unique_id=1793703222]
 script = ExtResource("1_pcmvo")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1364649679]
+[node name="GunVisual" type="Node2D" parent="." unique_id=1339822641]
+
+[node name="Sprite2D" type="Sprite2D" parent="GunVisual" unique_id=1364649679]
 texture_filter = 1
 position = Vector2(5, -2)
 texture = ExtResource("2_pcmvo")
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1520069953]
+[node name="Marker2D" type="Marker2D" parent="GunVisual" unique_id=1520069953]
 position = Vector2(16, -6)

@@ -24,6 +24,20 @@ var dash_direction = Vector2.ZERO
 ## Referência ao nó de sprite que renderiza o corpo do personagem.
 @onready var player_sprite = get_node("Body")
 
+@onready var hand_right: Marker2D = $HandRight
+@onready var hand_left: Marker2D = $HandLeft
+
+var gun_scene = preload("res://scenes/guns/pistol/pistol.tscn")  # ajuste o caminho
+
+func _ready() -> void:
+	equip_weapon(gun_scene)
+
+func equip_weapon(scene: PackedScene) -> void:
+	var gun = scene.instantiate()
+	add_child(gun)
+	gun.hand_right = hand_right
+	gun.hand_left = hand_left
+
 ## Inicializa e atualiza movimentação e posição do mouse e sprite a cada frame de física.
 func _physics_process(_delta: float) -> void:
 	# Realiza a movimentação do dash quando ativado

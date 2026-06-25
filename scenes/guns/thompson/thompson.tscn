@@ -6,9 +6,11 @@
 [node name="Thompson" type="Node2D" unique_id=1234401016]
 script = ExtResource("1_35kk6")
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1029866154]
+[node name="GunVisual" type="Node2D" parent="." unique_id=625395541]
+
+[node name="Marker2D" type="Marker2D" parent="GunVisual" unique_id=1029866154]
 position = Vector2(30, -1)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2035564382]
+[node name="Sprite2D" type="Sprite2D" parent="GunVisual" unique_id=2035564382]
 position = Vector2(10, 2)
 texture = ExtResource("1_rkjsm")
