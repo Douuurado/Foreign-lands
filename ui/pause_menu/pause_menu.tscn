@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cfyfi6a0i8mjs" path="res://ui/pause_menu/pause_menu.gd" id="1_6kl08"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1637220227]
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=36563641]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
@@ -12,7 +12,7 @@ offset_right = 639.0
 offset_bottom = 359.0
 script = ExtResource("1_6kl08")
 
-[node name="Continue" type="Button" parent="Control"]
+[node name="Continue" type="Button" parent="Control" unique_id=1134221176]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 62.0
@@ -20,7 +20,7 @@ offset_right = 91.0
 offset_bottom = 93.0
 text = "Continue"
 
-[node name="Back" type="Button" parent="Control"]
+[node name="Back" type="Button" parent="Control" unique_id=1552818361]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 135.0
