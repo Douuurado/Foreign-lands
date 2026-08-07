@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EncounterTable" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://systems/world_state/encounter_table.gd" id="1_table"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy_demo/enemy_demo.tscn" id="2_baseline"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/inimigo_provocador/inimigo_provocador.tscn" id="3_provocador"]
+
+[resource]
+script = ExtResource("1_table")
+paz = Array[PackedScene]([ExtResource("2_baseline")])
+tensao = Array[PackedScene]([ExtResource("2_baseline"), ExtResource("3_provocador")])
+repressao = Array[PackedScene]([ExtResource("3_provocador")])
+revolta = Array[PackedScene]([ExtResource("3_provocador")])
+revolucao = Array[PackedScene]([ExtResource("3_provocador")])

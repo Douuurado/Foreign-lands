@@ -44,3 +44,11 @@ func _on_detection_area_body_exited(_body: Node2D) -> void:
 ## Encaminha a solicitação de redução de vida para o gerenciador central de inimigos.
 func take_damage(amount):
 	get_node("/root/EnemyHealthManager").damage_enemy(self, amount)
+
+## A cena conecta o sinal "body_entered" da área Hurtbox a esta função, mas a função
+## não existia — isso gerava um erro em tempo real toda vez que algo tocava o inimigo.
+## Hoje o dano já é aplicado diretamente via take_damage() (chamado pela bala), então
+## esta função fica como um placeholder seguro, reservado para uma futura mecânica
+## (ex: dano de contato ou empurrão) que use esta área especificamente.
+func _on_hurtbox_body_entered(_body: Node2D) -> void:
+	pass

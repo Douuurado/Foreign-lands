@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="IslandDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://systems/world_state/island_definition.gd" id="1_island_def"]
+
+[resource]
+script = ExtResource("1_island_def")
+island_id = &"vaelmoor"
+display_name = "Vaelmoor"
+faction_ids = Array[StringName]([&"coroa", &"rebeldes"])
+starting_favor = Array[int]([50, 15])
+revolution_favor_threshold = 70
+revolution_pressure_threshold = 100
+domination_high_threshold = 70
+domination_low_threshold = 55
+tension_pressure_threshold = 25
+tension_favor_threshold = 40
+pressure_per_cycle = 3
+pressure_runaway_threshold = 60
+runaway_favor_b_gain = 1

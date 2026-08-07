@@ -6,9 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://mqj21swogplv" path="res://ui/game_screen/game_screen.tscn" id="4_s7ty0"]
 [ext_resource type="PackedScene" uid="uid://c48560254sqge" path="res://ui/pause_menu/pause_menu.tscn" id="5_s6s37"]
 [ext_resource type="PackedScene" uid="uid://bpfyks1aut7cu" path="res://systems/totem/totem.tscn" id="6_8qn0a"]
+[ext_resource type="Resource" path="res://resources/islands/vaelmoor_encounter_table.tres" id="7_encounter"]
+[ext_resource type="PackedScene" uid="uid://mybv3demqeof" path="res://scenes/npcs/npc1/npc1.tscn" id="8_renata"]
+[ext_resource type="PackedScene" path="res://systems/choices/political_choice.tscn" id="9_choice"]
+[ext_resource type="Script" uid="uid://bwvc0n21g7dh6" path="res://systems/world_state/island_mood_modulate.gd" id="10_mood"]
+[ext_resource type="Script" uid="uid://d20r2x51y4ffv" path="res://systems/world_state/reputation_debug_label.gd" id="11_debug"]
 
 [node name="Main" type="Node2D" unique_id=390945680]
 script = ExtResource("1_e0est")
+
+[node name="IslandMood" type="CanvasModulate" parent="." unique_id=1238533416]
+script = ExtResource("10_mood")
 
 [node name="Enemy1" parent="." unique_id=1190441581 instance=ExtResource("2_a4aen")]
 position = Vector2(245, -263)
@@ -25,3 +33,34 @@ visible = false
 
 [node name="Totem" parent="." unique_id=1243785729 instance=ExtResource("6_8qn0a")]
 position = Vector2(0, -104)
+island_id = &"vaelmoor"
+encounter_table = ExtResource("7_encounter")
+
+[node name="Renata" parent="." unique_id=232541840 instance=ExtResource("8_renata")]
+position = Vector2(-160, 90)
+
+[node name="ChoiceApoiarCoroa" parent="." unique_id=912011810 instance=ExtResource("9_choice")]
+position = Vector2(130, 90)
+choice_label = "Apoiar a Coroa (escoltar cobrança de impostos)"
+favor_deltas = {
+&"coroa": 12
+}
+
+[node name="ChoiceAjudarRebeldes" parent="." unique_id=2076927931 instance=ExtResource("9_choice")]
+position = Vector2(-40, 150)
+choice_label = "Ajudar os Rebeldes (esconder fugitivo)"
+favor_deltas = {
+&"rebeldes": 8
+}
+
+[node name="ReputationDebug" type="CanvasLayer" parent="." unique_id=1577911512]
+
+[node name="ReputationLabel" type="Label" parent="ReputationDebug" unique_id=2038850625]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 260.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+script = ExtResource("11_debug")

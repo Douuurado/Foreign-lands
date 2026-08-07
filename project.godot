@@ -22,6 +22,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 HealthManager="*res://systems/health_manager/health_manager.gd"
 EnemyHealthManager="*res://scenes/enemies/enemy_demo/enemy_health_manager.gd"
+WorldState="*res://systems/world_state/world_state.gd"
 
 [display]
 

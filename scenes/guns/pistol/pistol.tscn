@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brrsca3onguos"]
 
-[ext_resource type="Script" uid="uid://b2beqrmnaax35" path="res://systems/weapons/gun_config.gd" id="1_pcmvo"]
+[ext_resource type="Script" uid="uid://dhkia80g3mqb1" path="res://scenes/guns/pistol/pistol.gd" id="1_pcmvo"]
 [ext_resource type="Texture2D" uid="uid://cam8aegniqri0" path="res://assets/arts/guns/pistol.png" id="2_pcmvo"]
 
 [node name="Pistol" type="Node2D" unique_id=1793703222]

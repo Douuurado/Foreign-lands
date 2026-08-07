@@ -1,10 +1,20 @@
 extends Node2D
 
 @onready var pause_menu = $PauseMenu
+@onready var totem = $Totem
+@onready var wave_label: Label = $HUD/GameScreen/WaveLabel
 
 ## Conecta a morte do jogador à tela de game over assim que o jogo começa.
+## Também liga o texto "Wave X" da UI ao totem (fazia parte do vertical slice, mas
+## nunca tinha sido conectado a nada).
 func _ready() -> void:
 	HealthManager.died.connect(_on_player_died)
+	totem.wave_started.connect(_on_wave_started)
+
+## Mostra e atualiza o texto "Wave X" sempre que o totem inicia uma nova onda.
+func _on_wave_started(wave_number: int) -> void:
+	wave_label.text = "Wave %d" % wave_number
+	wave_label.visible = true
 
 ## Detecta comandos que não foram consumidos pela interface (UI) para pausar o jogo.
 func _unhandled_input(event):
