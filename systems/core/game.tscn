@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://75k4hphkrib2" path="res://scenes/player/player.tscn" id="3_voaa7"]
 [ext_resource type="PackedScene" uid="uid://mqj21swogplv" path="res://ui/game_screen/game_screen.tscn" id="4_s7ty0"]
 [ext_resource type="PackedScene" uid="uid://c48560254sqge" path="res://ui/pause_menu/pause_menu.tscn" id="5_s6s37"]
+[ext_resource type="PackedScene" uid="uid://dv278dp6r75cx" path="res://scenes/enemies/enemy67/character_body_2d.tscn" id="5_stn1v"]
 [ext_resource type="PackedScene" uid="uid://bpfyks1aut7cu" path="res://systems/totem/totem.tscn" id="6_8qn0a"]
 [ext_resource type="Resource" path="res://resources/islands/vaelmoor_encounter_table.tres" id="7_encounter"]
 [ext_resource type="PackedScene" uid="uid://mybv3demqeof" path="res://scenes/npcs/npc1/npc1.tscn" id="8_renata"]
@@ -26,7 +27,11 @@ position = Vector2(245, -263)
 [node name="Enemy2" parent="." unique_id=20301533 instance=ExtResource("2_a4aen")]
 position = Vector2(-230, -257)
 
+[node name="enemy67" parent="." unique_id=841482763 instance=ExtResource("5_stn1v")]
+position = Vector2(262, 243)
+
 [node name="HUD" parent="." unique_id=1312088494 instance=ExtResource("4_s7ty0")]
+position = Vector2(1, 0)
 
 [node name="PauseMenu" parent="." unique_id=1620780129 instance=ExtResource("5_s6s37")]
 visible = false
@@ -56,10 +61,10 @@ favor_deltas = {
 [node name="ReputationDebug" type="CanvasLayer" parent="." unique_id=1577911512]
 
 [node name="ReputationLabel" type="Label" parent="ReputationDebug" unique_id=2038850625]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 260.0
-offset_bottom = 80.0
+offset_left = 50.0
+offset_top = -28.0
+offset_right = 302.0
+offset_bottom = 44.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
