@@ -24,7 +24,9 @@ const DIALOGUE := {
 var _current_line: String = DIALOGUE[&"paz"]
 
 func _on_interact() -> void:
-	print(_current_line)
+	$CanvasLayer/Panel/Label.text = _current_line
+	$CanvasLayer/Panel.show()
+	
 	# TODO: plugar no sistema de diálogo de verdade quando ele existir.
 
 func _apply_current_state(state: StringName) -> void:

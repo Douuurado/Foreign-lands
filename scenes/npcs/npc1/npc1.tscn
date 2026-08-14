@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://p6ylxud7d61r" path="res://scenes/npcs/npc1/npc1.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://c0jb2e818em30" path="res://assets/arts/player/player.jpeg" id="2_art_placeholder"]
 [ext_resource type="PackedScene" uid="uid://bvh7yrf5jnb8s" path="res://systems/interactions/interactable.tscn" id="3_interactable"]
+[ext_resource type="Script" uid="uid://bcwducy30ec1e" path="res://scenes/npcs/npc1/panel.gd" id="4_lh6h3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
 radius = 16.0
@@ -22,8 +23,27 @@ texture = ExtResource("2_art_placeholder")
 shape = SubResource("CircleShape2D_body")
 
 [node name="Interactable" parent="." unique_id=184423635 instance=ExtResource("3_interactable")]
+position = Vector2(-2, -1)
 collision_layer = 2
-interact_name = "Falar com Renata"
+interact_name = "Falar com E"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=200812877]
 shape = SubResource("CircleShape2D_interact")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=488247358]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1593491855]
+visible = false
+offset_left = 133.0
+offset_top = 281.0
+offset_right = 490.0
+offset_bottom = 321.0
+script = ExtResource("4_lh6h3")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=498163911]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 506.0
+offset_bottom = 67.0
+text = "Mais um dia de cobrança. Nada de especial."
