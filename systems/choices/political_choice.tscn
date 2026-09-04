@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://systems/choices/political_choice.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/arts/player/player.jpeg" id="2_art_placeholder"]
+[ext_resource type="PackedScene" path="res://systems/interactions/interactable.tscn" id="3_interactable"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
+radius = 42.0
+
+[node name="PoliticalChoice" type="StaticBody2D"]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_art_placeholder")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="Interactable" parent="." instance=ExtResource("3_interactable")]
+collision_layer = 2
+interact_name = "Escolher"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("CircleShape2D_interact")

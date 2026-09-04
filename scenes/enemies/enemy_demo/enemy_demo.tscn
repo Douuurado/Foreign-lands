@@ -17,6 +17,7 @@ height = 40.0
 
 [node name="Enemy1" type="CharacterBody2D" unique_id=2111911087 groups=["enemy"]]
 position = Vector2(188, 0)
+motion_mode = 1
 script = ExtResource("1_mlfm0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1776542167]

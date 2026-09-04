@@ -27,3 +27,6 @@ func _on_hurtbox_body_entered(body: Node2D):
 	# Duck typing: verifica se o objeto atingido possui a função de receber dano
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
+		# Sem isso, a bala continuava voando através do inimigo depois de acertar
+		# (nunca era destruída no impacto, só quando saía da tela).
+		queue_free()

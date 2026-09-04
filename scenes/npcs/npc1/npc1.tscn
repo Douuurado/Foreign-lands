@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://mybv3demqeof"]
+
+[ext_resource type="Script" uid="uid://p6ylxud7d61r" path="res://scenes/npcs/npc1/npc1.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c0jb2e818em30" path="res://assets/arts/player/player.jpeg" id="2_art_placeholder"]
+[ext_resource type="PackedScene" uid="uid://bvh7yrf5jnb8s" path="res://systems/interactions/interactable.tscn" id="3_interactable"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
+radius = 42.0
+
+[node name="Npc1" type="StaticBody2D" unique_id=1051056089]
+script = ExtResource("1_script")
+island_id = &"vaelmoor"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2002539390]
+modulate = Color(0.55, 0.75, 1, 1)
+texture = ExtResource("2_art_placeholder")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1270242779]
+shape = SubResource("CircleShape2D_body")
+
+[node name="Interactable" parent="." unique_id=184423635 instance=ExtResource("3_interactable")]
+collision_layer = 2
+interact_name = "Falar com Renata"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=200812877]
+shape = SubResource("CircleShape2D_interact")

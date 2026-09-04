@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://tm0nst85fukp" path="res://systems/totem/totem.gd" id="1_47a6w"]
 [ext_resource type="Texture2D" uid="uid://c0jb2e818em30" path="res://assets/arts/player/player.jpeg" id="1_c2bs7"]
 [ext_resource type="PackedScene" uid="uid://bvh7yrf5jnb8s" path="res://systems/interactions/interactable.tscn" id="2_1fxjt"]
+[ext_resource type="PackedScene" uid="uid://cemohmi6tbvp4" path="res://scenes/enemies/enemy_demo/enemy_demo.tscn" id="2_5kdu0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pt3a"]
 radius = 16.0
@@ -12,18 +13,31 @@ radius = 42.107006
 
 [node name="Totem" type="StaticBody2D" unique_id=885295194]
 script = ExtResource("1_47a6w")
+enemy_scene = ExtResource("2_5kdu0")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=168316956]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1683617425]
 texture = ExtResource("1_c2bs7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1992707147]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=809715906]
 shape = SubResource("CircleShape2D_6pt3a")
 
-[node name="Interactable" parent="." unique_id=383203101 instance=ExtResource("2_1fxjt")]
+[node name="Interactable" parent="." unique_id=44679653 instance=ExtResource("2_1fxjt")]
 rotation = -3.1256618
 scale = Vector2(0.99999994, 0.99999994)
 collision_layer = 2
 interact_name = "Use Totem"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1563173329]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1862427384]
 shape = SubResource("CircleShape2D_5ann1")
+
+[node name="SpawnPoint1" type="Marker2D" parent="." unique_id=1387340993]
+position = Vector2(140, 0)
+
+[node name="SpawnPoint2" type="Marker2D" parent="." unique_id=856692814]
+position = Vector2(-140, 0)
+
+[node name="SpawnPoint3" type="Marker2D" parent="." unique_id=541869224]
+position = Vector2(0, 140)
+
+[node name="SpawnPoint4" type="Marker2D" parent="." unique_id=1064270105]
+position = Vector2(0, -140)

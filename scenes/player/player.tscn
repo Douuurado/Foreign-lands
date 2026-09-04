@@ -193,6 +193,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=2100178943 groups=["player"]]
 collision_layer = 32
+motion_mode = 1
 platform_floor_layers = 4294967041
 platform_wall_layers = 1
 script = ExtResource("1_hqdyo")
