@@ -1,4 +1,4 @@
-class_name GunDemo extends Node2D
+class_name GunPistol extends Node2D
 
 const MIN_DISTANCE = 8
 @export var fire_rate = 0.2
@@ -41,6 +41,12 @@ func _physics_process(delta: float) -> void:
 	last_time_shot += delta
 	if Input.is_action_pressed("shoot") and last_time_shot >= fire_rate:
 		shoot()
+
+func try_shoot() -> bool:
+	if last_time_shot >= fire_rate:
+		shoot()
+		return true
+	return false
 
 func shoot():
 	last_time_shot = 0.0

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var max_health : int = 3
 @export var damage_amount : int = 1
 @export var attack_range : float = 500.0
+@onready var weapon = $Pistol
 
 var follow_range = 800
 var min_distance = 20
@@ -33,9 +34,13 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 
 func attack() -> void:
-	if not can_attack:
+	if not can_attack or weapon == null:
 		return
 	can_attack = false
+	weapon.try_shoot()
+
+	await get_tree().create_timer(1.0).timeout
+	can_attack = true
 
 	if target and target.has_method("take_damage"):
 		target.take_damage(damage_amount)

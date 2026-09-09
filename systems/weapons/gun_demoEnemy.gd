@@ -1,4 +1,4 @@
-extends Node2D
+class_name GunEnemy extends Node2D
 
 const MIN_DISTANCE = 8
 
@@ -26,10 +26,11 @@ func _physics_process(delta: float) -> void:
 	if player == null:
 		player = get_tree().get_first_node_in_group("player")
 		if player == null:
-			return  # player ainda não existe na árvore, espera o próximo frame
-
+			return
 	var to_player = player.global_position - global_position
-
+	if to_player.length_squared() <= MIN_DISTANCE * MIN_DISTANCE:
+		return
+	look_at(player.global_position)
 	if to_player.length_squared() <= MIN_DISTANCE * MIN_DISTANCE:
 		return
 
@@ -54,7 +55,6 @@ func _physics_process(delta: float) -> void:
 ## respeitando o cooldown de fire_rate.
 func try_shoot() -> bool:
 	if last_time_shot >= fire_rate:
-		print("nigga")
 		shoot()
 		return true
 	return false
