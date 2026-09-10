@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cbtrbrpk7ua5"]
+
+[ext_resource type="Script" uid="uid://cvu3u47jc356g" path="res://scenes/npcs/NPC_base.gd" id="1_ewn4u"]
+[ext_resource type="Texture2D" uid="uid://c0jb2e818em30" path="res://assets/arts/player/player.jpeg" id="2_2fv2r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewn4u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_135ep"]
+radius = 16.03122
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s4g6m"]
+radius = 56.88585
+
+[node name="JoaoNpc" type="CharacterBody2D" unique_id=1354014756]
+script = ExtResource("1_ewn4u")
+npc_name = "Joao"
+dialogue = Array[String](["Eu sou João, um NPC de Foreign Islands.", "Como vai você, Aventureiro?"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2031355168]
+shape = SubResource("CircleShape2D_ewn4u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=800456029]
+texture = ExtResource("2_2fv2r")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1059006027]
+
+[node name="Hitbox" type="CollisionShape2D" parent="StaticBody2D" unique_id=1839347227]
+shape = SubResource("CircleShape2D_135ep")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1998600527]
+
+[node name="Interact Radius" type="CollisionShape2D" parent="Area2D" unique_id=1903255892]
+shape = SubResource("CircleShape2D_s4g6m")

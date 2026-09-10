@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" path="res://systems/choices/political_choice.tscn" id="9_choice"]
 [ext_resource type="Script" uid="uid://bwvc0n21g7dh6" path="res://systems/world_state/island_mood_modulate.gd" id="10_mood"]
 [ext_resource type="Script" uid="uid://d20r2x51y4ffv" path="res://systems/world_state/reputation_debug_label.gd" id="11_debug"]
+[ext_resource type="PackedScene" uid="uid://cbtrbrpk7ua5" path="res://scenes/npcs/npc2/Joao_NPC.tscn" id="12_stn1v"]
+[ext_resource type="PackedScene" uid="uid://c1rhvhr7lw7wu" path="res://scenes/npcs/npc3/MariaNPC.tscn" id="13_psnfj"]
 
 [node name="Main" type="Node2D" unique_id=390945680]
 script = ExtResource("1_e0est")
@@ -64,3 +66,9 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 script = ExtResource("11_debug")
+
+[node name="JoaoNpc" parent="." unique_id=1951333272 instance=ExtResource("12_stn1v")]
+position = Vector2(258, 101)
+
+[node name="MariaNpc" parent="." unique_id=476725876 instance=ExtResource("13_psnfj")]
+position = Vector2(97, 223)
