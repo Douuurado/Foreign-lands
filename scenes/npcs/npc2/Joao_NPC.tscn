@@ -31,3 +31,6 @@ shape = SubResource("CircleShape2D_135ep")
 
 [node name="Interact Radius" type="CollisionShape2D" parent="Area2D" unique_id=1903255892]
 shape = SubResource("CircleShape2D_s4g6m")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

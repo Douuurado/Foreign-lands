@@ -9,13 +9,20 @@ extends CharacterBody2D
 
 @export_category("Configurações")
 @export var can_interact: bool = true
+var player_dentro := false
+
+func _process(_delta):
+	if player_dentro and Input.is_action_just_pressed("interagir"):
+		conversar()
+
+func conversar():
+	pass
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+		player_dentro = true
+		print("Player entrou no raio de interação")
 
 
-func interact() -> void:
-	if not can_interact:
-		return
-	elif Input.is_key_pressed(KEY_E):
-		print(npc_name)
-		print(dialogue)
-	# Aqui você chama o seu sistema de diálogo.
-	# Por enquanto, apenas mostra no console.
+func _on_area_2d_area_exited(area: Area2D) -> void:
+		player_dentro = false
+		print("Player saiu do raio de interação")
