@@ -116,6 +116,17 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		await get_tree().create_timer(invulnerability_time).timeout
 		invulnerable = false
 		
+## Recebe dano vindo de balas/projéteis (chamado via duck typing, ex: bullet_enemy.gd).
+func take_damage(amount: int) -> void:
+	if invulnerable:
+		return
+	invulnerable = true
+	$AnimationPlayer.play("hit_flash")
+	HealthManager.decrease_health(amount)
+
+	await get_tree().create_timer(invulnerability_time).timeout
+	invulnerable = false		
+		
 ## Configura o estado do dash (liga ou desliga o dash)
 func start_dash(direction: Vector2) -> void:
 	# Liga as variáveis do estado do dash

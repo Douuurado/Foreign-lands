@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://75k4hphkrib2" path="res://scenes/player/player.tscn" id="3_voaa7"]
 [ext_resource type="PackedScene" uid="uid://mqj21swogplv" path="res://ui/game_screen/game_screen.tscn" id="4_s7ty0"]
 [ext_resource type="PackedScene" uid="uid://c48560254sqge" path="res://ui/pause_menu/pause_menu.tscn" id="5_s6s37"]
-[ext_resource type="PackedScene" uid="uid://dv278dp6r75cx" path="res://scenes/enemies/enemy67/character_body_2d.tscn" id="5_stn1v"]
+[ext_resource type="PackedScene" uid="uid://dv278dp6r75cx" path="res://scenes/enemies/enemy_shooter/enemy_shooter.tscn" id="5_stn1v"]
 [ext_resource type="PackedScene" uid="uid://bpfyks1aut7cu" path="res://systems/totem/totem.tscn" id="6_8qn0a"]
 [ext_resource type="Resource" path="res://resources/islands/vaelmoor_encounter_table.tres" id="7_encounter"]
 [ext_resource type="PackedScene" uid="uid://mybv3demqeof" path="res://scenes/npcs/npc1/npc1.tscn" id="8_renata"]

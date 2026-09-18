@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://1kqo205kxx21"]
+
+[ext_resource type="Script" uid="uid://bxq1a2g1so70u" path="res://scenes/guns/pistol_enemy/pistol_enemy.gd" id="1_qnfh0"]
+[ext_resource type="Texture2D" uid="uid://cam8aegniqri0" path="res://assets/arts/guns/pistol.png" id="2_50t1i"]
+
+[node name="PistolEnemy" type="Node2D" unique_id=1793703222]
+script = ExtResource("1_qnfh0")
+fire_rate = 2.0
+bullet_speed = 100
+
+[node name="GunVisual" type="Node2D" parent="." unique_id=1339822641]
+
+[node name="Sprite2D" type="Sprite2D" parent="GunVisual" unique_id=1364649679]
+texture_filter = 1
+position = Vector2(5, -2)
+texture = ExtResource("2_50t1i")
+
+[node name="Marker2D" type="Marker2D" parent="GunVisual" unique_id=1520069953]
+position = Vector2(16, -6)

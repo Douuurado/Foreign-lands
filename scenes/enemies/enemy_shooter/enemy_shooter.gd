@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var max_health : int = 3
 @export var damage_amount : int = 1
 @export var attack_range : float = 500.0
-@onready var weapon = $Pistol
+@onready var weapon = $PistolEnemy
 
 var follow_range = 800
 var min_distance = 20
@@ -34,19 +34,9 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 
 func attack() -> void:
-	if not can_attack or weapon == null:
+	if weapon == null:
 		return
-	can_attack = false
 	weapon.try_shoot()
-
-	await get_tree().create_timer(1.0).timeout
-	can_attack = true
-
-	if target and target.has_method("take_damage"):
-		target.take_damage(damage_amount)
-
-	await get_tree().create_timer(1.0).timeout
-	can_attack = true
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	print("Detectou: ", body.name)
@@ -62,3 +52,7 @@ func _on_detection_area_body_exited(_body: Node2D) -> void:
 ## Encaminha a solicitação de redução de vida para o gerenciador central de inimigos.
 func take_damage(amount):
 	get_node("/root/EnemyHealthManager").damage_enemy(self, amount)
+
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

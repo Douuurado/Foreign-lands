@@ -5,12 +5,12 @@ const MIN_DISTANCE = 8
 
 @export var fire_rate = 0.2
 @export var bullet_speed = 1000
-@export var damage = 10
+@export var damage = 1
 @export var spread = 0
 
 var last_time_shot = 0.0
 var facing_left := false
-var bullet_scene = preload("res://scenes/projectiles/bullet_demo.tscn")
+var bullet_scene = preload("res://scenes/projectiles/bullet_enemy.tscn")
 
 @onready var gun_visual: Node2D = $GunVisual
 @onready var muzzle: Marker2D = $GunVisual/Marker2D
