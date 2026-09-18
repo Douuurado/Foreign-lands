@@ -23,3 +23,14 @@ func damage_enemy(enemy, amount):
 			enemies.erase(enemy)
 		else:
 			on_health_changed.emit(enemy, enemies[enemy])
+			## Recalibra a vida de um inimigo já vivo quando o estado da ilha muda,
+## mantendo a % de vida atual (não cura nem mata de repente).
+## old_max/new_max vêm do próprio inimigo, que é quem sabe seu max_health.
+func rescale_enemy_health(enemy, old_max_health: int, new_max_health: int) -> void:
+	if not enemies.has(enemy):
+		return
+	var current = enemies[enemy]
+	var ratio = float(current) / float(maxi(old_max_health, 1))
+	var new_health = maxi(1, roundi(new_max_health * ratio))
+	enemies[enemy] = new_health
+	on_health_changed.emit(enemy, new_health)

@@ -1,54 +1,76 @@
 extends CharacterBody2D
 
-## Velocidade de deslocamento do inimigo durante a perseguição.
-@export var speed : int = 200
-## Quantidade máxima de pontos de vida que o inimigo possui.
-@export var max_health : int = 3
-## Quantidade de dano que este inimigo causa ao atingir o jogador.
-@export var damage_amount : int = 1
+## A qual ilha este inimigo pertence.
+@export var island_id: StringName = &"vaelmoor"
 
-## Armazena a referência do nó que o inimigo está perseguindo (ex: o Player).
+@export var speed : int = 200
+@export var max_health : int = 3
+## Dano causado ao jogador por hit, em CORAÇÕES (o personagem tem 3 no total).
+@export var damage_amount : int = 1
+@export var ignore_state_mods : bool = false
+
+## Multiplicadores por estado. PAZ = normal (1.0 em tudo, valores do
+## Inspector sem alteração). Os estados mais tensos sobem a partir daí.
+const STATE_MODS := {
+	&"paz":       {"health": 1.0, "speed": 1.0,  "damage": 1.0},
+	&"tensao":    {"health": 2.0, "speed": 1.1,  "damage": 1.0},
+	&"repressao": {"health": 5.5, "speed": 1.2,  "damage": 2.0},
+	&"revolta":   {"health": 2.3, "speed": 1.25, "damage": 2.0},
+	&"revolucao": {"health": 2.6, "speed": 1.3,  "damage": 2.0},
+} 
+const DEFAULT_MODS := {"health": 1.0, "speed": 1.0, "damage": 1.0}  # fallback = paz
+
 var target = null
-## Controla se o comportamento de perseguição está ativo no momento.
 var target_chase = false
 
-## Registra o inimigo no gerenciador global de vida ao entrar na cena.
+var _base_speed : int
+var _base_max_health : int
+var _base_damage : int
+
 func _ready():
+	_base_speed = speed
+	_base_max_health = max_health
+	_base_damage = damage_amount
+
+	WorldState.state_changed.connect(_on_world_state_changed)
+	_apply_state_mods(WorldState.get_state(island_id))
+
 	get_node("/root/EnemyHealthManager").register_enemy(self, max_health)
 
-## Executa a movimentação de perseguição usando a física nativa para evitar atravessar paredes.
+func _apply_state_mods(state: StringName) -> void:
+	if ignore_state_mods:
+		return
+	var mods = STATE_MODS.get(state, DEFAULT_MODS)
+	max_health = maxi(1, roundi(_base_max_health * mods["health"]))
+	speed = roundi(_base_speed * mods["speed"])
+	damage_amount = maxi(1, roundi(_base_damage * mods["damage"]))
+
+func _on_world_state_changed(changed_island_id: StringName, _old_state: StringName, new_state: StringName) -> void:
+	if changed_island_id != island_id:
+		return
+	var old_max := max_health
+	_apply_state_mods(new_state)
+	if old_max != max_health:
+		get_node("/root/EnemyHealthManager").rescale_enemy_health(self, old_max, max_health)
+
 func _physics_process(_delta: float) -> void:
 	if target_chase and target:
-		# Calcula a direção exata usando posições globais
 		var direction = global_position.direction_to(target.global_position)
-		
-		# Define a velocidade nativa do CharacterBody2D
 		velocity = direction * speed
-		
-		# Aplica o movimento tratando colisões com o cenário (não precisa multiplicar por delta)
 		move_and_slide()
 	else:
-		# Zera a velocidade caso não esteja perseguindo ninguém, parando o inimigo suavemente
 		velocity = Vector2.ZERO
-		
-## Define o corpo detectado como alvo e ativa o estado de perseguição.
+
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	target = body
 	target_chase = true
-		
-## Limpa a referência do alvo e interrompe a perseguição quando ele se afasta.
+
 func _on_detection_area_body_exited(_body: Node2D) -> void:
 	target = null
 	target_chase = false
-	
-## Encaminha a solicitação de redução de vida para o gerenciador central de inimigos.
+
 func take_damage(amount):
 	get_node("/root/EnemyHealthManager").damage_enemy(self, amount)
 
-## A cena conecta o sinal "body_entered" da área Hurtbox a esta função, mas a função
-## não existia — isso gerava um erro em tempo real toda vez que algo tocava o inimigo.
-## Hoje o dano já é aplicado diretamente via take_damage() (chamado pela bala), então
-## esta função fica como um placeholder seguro, reservado para uma futura mecânica
-## (ex: dano de contato ou empurrão) que use esta área especificamente.
 func _on_hurtbox_body_entered(_body: Node2D) -> void:
 	pass
