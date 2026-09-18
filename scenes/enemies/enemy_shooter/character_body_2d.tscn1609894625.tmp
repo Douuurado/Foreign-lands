@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dv278dp6r75cx"]
+
+[ext_resource type="Script" uid="uid://hpvyv4hxjsvd" path="res://scenes/enemies/enemy67/character_body_2d.gd" id="1_r6oe3"]
+[ext_resource type="Texture2D" uid="uid://bensnjqo0ec1t" path="res://assets/arts/enemies/enemy_demo/Captura de tela 2026-04-13 212659.png" id="2_r6oe3"]
+[ext_resource type="PackedScene" uid="uid://brrsca3onguos" path="res://scenes/guns/pistol/pistol.tscn" id="3_syy3x"]
+[ext_resource type="Script" uid="uid://cx4hfakti0gjm" path="res://systems/weapons/gun_demoEnemy.gd" id="4_yqxli"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yot6x"]
+radius = 16.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_en8do"]
+radius = 668.0
+height = 1336.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ynn4l"]
+radius = 20.0
+height = 40.0
+
+[node name="enemy67" type="CharacterBody2D" unique_id=841482763 groups=["player"]]
+script = ExtResource("1_r6oe3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1822232091]
+scale = Vector2(0.027989829, 0.024418196)
+texture = ExtResource("2_r6oe3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=908775527]
+shape = SubResource("CapsuleShape2D_yot6x")
+one_way_collision_margin = 0.0
+debug_color = Color(0, 0.61035, 0.635927, 0.42)
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=948641000]
+collision_mask = 32
+
+[node name="DetectCollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1713071687 groups=["player"]]
+shape = SubResource("CapsuleShape2D_en8do")
+debug_color = Color(0.991572, 0, 0.26379, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1783369883]
+
+[node name="HurtBoxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1259900328]
+shape = SubResource("CapsuleShape2D_ynn4l")
+
+[node name="Pistol" parent="." unique_id=1793703222 instance=ExtResource("3_syy3x")]
+script = ExtResource("4_yqxli")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

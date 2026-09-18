@@ -1,4 +1,4 @@
-extends GunDemo
+extends GunPistol
 
 ## Tempo de espera (em segundos) entre cada disparo desta submetralhadora (cadência rápida).
 @export var custom_fire_rate = 0.15

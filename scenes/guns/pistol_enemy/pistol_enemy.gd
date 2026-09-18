@@ -1,29 +1,36 @@
-class_name GunPistol extends Node2D
+class_name GunPistolEnemy extends Node2D
 
 const MIN_DISTANCE = 8
 @export var fire_rate = 0.2
 @export var bullet_speed = 1000
-@export var damage = 10
+@export var damage = 1
 @export var spread = 0
 
 var last_time_shot = 0.0
 var facing_left := false
-var bullet_scene = preload("res://scenes/projectiles/bullet_demo.tscn")
+var bullet_scene = preload("res://scenes/projectiles/bullet_enemy.tscn")
 
 @onready var gun_visual: Node2D = $GunVisual
 @onready var muzzle: Marker2D = $GunVisual/Marker2D
+
+## Referência ao player, buscada sob demanda.
+var player: Node2D = null
 
 ## Referências às mãos do personagem, atribuídas pelo personagem ao instanciar a arma.
 var hand_right: Marker2D
 var hand_left: Marker2D
 
 func _physics_process(delta: float) -> void:
-	var mouse_pos = get_global_mouse_position()
-	var direction = mouse_pos - global_position
+	if player == null:
+		player = get_tree().get_first_node_in_group("player")
+		if player == null:
+			return
+
+	var direction = player.global_position - global_position
 	if direction.length_squared() <= MIN_DISTANCE * MIN_DISTANCE:
 		return
 
-	look_at(mouse_pos)
+	look_at(player.global_position)
 	var angle = rad_to_deg(direction.angle())
 
 	if facing_left:
@@ -39,8 +46,8 @@ func _physics_process(delta: float) -> void:
 		global_position = hand_left.global_position if facing_left else hand_right.global_position
 
 	last_time_shot += delta
-	if Input.is_action_pressed("shoot") and last_time_shot >= fire_rate:
-		shoot()
+	# Removido: Input.is_action_pressed("shoot") — inimigo não atira por input do jogador,
+	# quem chama o tiro é o script do inimigo via try_shoot()
 
 func try_shoot() -> bool:
 	if last_time_shot >= fire_rate:

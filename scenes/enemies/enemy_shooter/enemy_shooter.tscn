@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dv278dp6r75cx"]
+
+[ext_resource type="Script" uid="uid://hpvyv4hxjsvd" path="res://scenes/enemies/enemy_shooter/enemy_shooter.gd" id="1_r6oe3"]
+[ext_resource type="Texture2D" uid="uid://c0jb2e818em30" path="res://assets/arts/player/player.jpeg" id="2_c0kh4"]
+[ext_resource type="PackedScene" uid="uid://1kqo205kxx21" path="res://scenes/guns/pistol_enemy/pistol_enemy.tscn" id="3_swj5g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yot6x"]
+radius = 16.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_en8do"]
+radius = 668.0
+height = 1336.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ynn4l"]
+radius = 20.0
+height = 40.0
+
+[node name="EnemyShooter" type="CharacterBody2D" unique_id=841482763 groups=["player"]]
+script = ExtResource("1_r6oe3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1822232091]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_c0kh4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=908775527]
+shape = SubResource("CapsuleShape2D_yot6x")
+one_way_collision_margin = 0.0
+debug_color = Color(0, 0.61035, 0.635927, 0.42)
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=948641000]
+collision_mask = 32
+
+[node name="DetectCollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1713071687 groups=["player"]]
+shape = SubResource("CapsuleShape2D_en8do")
+debug_color = Color(0.991572, 0, 0.26379, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1783369883]
+
+[node name="HurtBoxCollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1259900328]
+shape = SubResource("CapsuleShape2D_ynn4l")
+
+[node name="PistolEnemy" parent="." unique_id=1793703222 instance=ExtResource("3_swj5g")]
+fire_rate = 1.0
+bullet_speed = 500
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
